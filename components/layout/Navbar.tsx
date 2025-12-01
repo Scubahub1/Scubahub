@@ -19,9 +19,7 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", href: "/" },
-
     { name: "Courses", href: "/courses" },
-
     { name: "Packages", href: "/packages" },
     { name: "Gallery", href: "/gallery" },
     { name: "About", href: "/about" },
@@ -46,13 +44,16 @@ const Navbar = () => {
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-ocean-400 to-teal-500 flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:animate-pulse-slow">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-blue-500/30 group-hover:shadow-cyan-400/50 transition-all duration-300 group-hover:scale-110">
             A
           </div>
           <span
             className={`text-xl md:text-2xl font-bold font-display tracking-wide ${textColorClass} transition-colors`}
           >
-            Scuba<span className="text-ocean-400">Hub</span>
+            Scuba
+            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              Hub
+            </span>
           </span>
         </Link>
 
@@ -64,27 +65,27 @@ const Navbar = () => {
               <div key={link.name} className="relative px-3 py-2 group">
                 {/* Active Indicator (Dot) ABOVE the text */}
                 {active && (
-                  <span className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-ocean-400 rounded-full shadow-[0_0_8px_rgba(56,189,248,0.8)] animate-pulse"></span>
+                  <span className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full shadow-[0_0_10px_rgba(34,211,238,0.8)] animate-pulse"></span>
                 )}
 
                 <Link
                   href={link.href}
                   className={`
-                    relative text-sm font-medium tracking-wide transition-colors duration-300 pt-1
-                    ${active ? "text-ocean-400" : textColorClass}
-                    hover:text-ocean-300
+                    relative text-sm font-medium tracking-wide transition-all duration-300 pt-1
+                    ${active ? "text-cyan-400" : textColorClass}
+                    hover:text-cyan-300
                   `}
                 >
                   {link.name}
                 </Link>
 
-                {/* Hover Indicator (subtle glow from bottom) */}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-ocean-400/50 group-hover:w-1/2 transition-all duration-300"></span>
+                {/* Hover Indicator */}
+                <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent group-hover:w-full transition-all duration-300 rounded-full"></span>
               </div>
             );
           })}
 
-          <div className="h-6 w-px bg-white/20 mx-4"></div>
+          <div className="h-6 w-px bg-gradient-to-b from-transparent via-white/30 to-transparent mx-4"></div>
 
           <Button href="/book" variant="primary" className="py-2 px-5 text-sm">
             Book Now
@@ -121,7 +122,7 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`md:hidden absolute top-full left-0 w-full bg-slate-900 border-t border-white/10 overflow-hidden transition-all duration-300 shadow-xl ${
+        className={`md:hidden absolute top-full left-0 w-full bg-gradient-to-b from-slate-900 to-slate-950 border-t border-cyan-500/20 overflow-hidden transition-all duration-300 shadow-xl shadow-cyan-500/10 ${
           isOpen ? "max-h-[500px] py-6" : "max-h-0 py-0"
         }`}
       >
@@ -132,12 +133,15 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`text-lg font-medium ${
-                  active ? "text-ocean-400" : "text-slate-200"
-                } hover:text-ocean-500`}
+                className={`relative text-lg font-medium transition-colors ${
+                  active ? "text-cyan-400" : "text-slate-200"
+                } hover:text-cyan-300`}
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}
+                {active && (
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 rounded-full shadow-[0_0_8px_rgba(34,211,238,0.6)]"></span>
+                )}
               </Link>
             );
           })}
