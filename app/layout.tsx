@@ -4,6 +4,8 @@ import Footer from "../components/layout/Footer";
 import { Inter, Montserrat } from "../lib/next-shim";
 import ScrollToTop from "../components/ui/ScrollToTop";
 import ContactWidget from "../components/ui/ContactWidget";
+import SchemaMarkup from "../components/SEO/SchemaMarkup";
+import CanonicalUrl from "../components/SEO/CanonicalUrl";
 import "./globals.css";
 
 // Fonts Mock
@@ -28,6 +30,8 @@ export default function RootLayout({
     <div
       className={`${inter.variable} ${montserrat.variable} font-sans antialiased min-h-screen flex flex-col bg-slate-950 text-slate-100 dark transition-colors duration-300`}
     >
+      <CanonicalUrl />
+      <SchemaMarkup type="LocalBusiness" />
       <Navbar />
       <main className="flex-grow">{children}</main>
       <Footer />
