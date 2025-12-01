@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import RootLayout from "./app/layout.tsx";
+import RootLayout from "./app/layout";
 import Home from "./app/page";
 import CoursesPage from "./app/courses/page";
 import PackagesPage from "./app/packages/page";
