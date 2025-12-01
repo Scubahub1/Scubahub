@@ -11,7 +11,7 @@
           "value": "www.scubahub.com"
         }
       ],
-      "destination": "https://scubahub.com/:1",
+      "destination": "https://scubahub.com/",
       "permanent": true
     }
   ],
