@@ -5,7 +5,7 @@ import SectionTitle from "../../components/ui/SectionTitle";
 import Button from "../../components/ui/Button";
 import { experiences } from "../../data/mockData";
 
-export default function BookPage() {
+const BookPageClient: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,11 +16,14 @@ export default function BookPage() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
+
   const WHATSAPP_NUMBER = "919876543210";
+
   const formatMessageForWhatsApp = (data: typeof formData) => {
     const expTitle =
       experiences.find((exp) => exp.slug === data.experience)?.title ||
       data.experience;
+
     return `
 New Booking Request from ${data.name}:
 
@@ -39,13 +42,12 @@ Please confirm availability! 😊`;
     const message = formatMessageForWhatsApp(formData);
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
-    window.open(whatsappUrl, "_blank"); // Opens in new tab; use '_self' to replace current page
+    window.open(whatsappUrl, "_blank");
   };
 
-  // Send via email (opens user's default email client) – fully client-side
   const sendToEmail = (toEmail: string = "your-support@email.com") => {
     const subject = `New Booking Request from ${formData.name}`;
-    const body = formatMessageForWhatsApp(formData); // Reuse the same formatted message
+    const body = formatMessageForWhatsApp(formData);
     const mailtoUrl = `mailto:${toEmail}?subject=${encodeURIComponent(
       subject
     )}&body=${encodeURIComponent(body)}`;
@@ -55,11 +57,13 @@ Please confirm availability! 😊`;
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSending(true);
+
     console.log("Booking Request:", formData);
 
-    // For static sites: Use client-side methods only (no backend needed)
-    sendToWhatsApp(); // Primary: Opens WhatsApp with pre-filled message
-    // sendToEmail(); // Optional: Uncomment to also open email client (user sends manually)
+    // Primary: open WhatsApp with pre-filled message
+    sendToWhatsApp();
+    // Optional: also open email client
+    // sendToEmail();
 
     setSubmitted(true);
     setIsSending(false);
@@ -67,7 +71,7 @@ Please confirm availability! 😊`;
 
   if (submitted) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center px-4 text-center">
+      <div className="min-h-screen flex flex-col items-center justify-center px-4 text-center bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
         <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center text-4xl mb-6">
           ✓
         </div>
@@ -258,4 +262,6 @@ Please confirm availability! 😊`;
       </div>
     </div>
   );
-}
+};
+
+export default BookPageClient;

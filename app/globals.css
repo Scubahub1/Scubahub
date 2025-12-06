@@ -76,3 +76,33 @@ body {
   animation: fade-in-up 0.6s ease-out forwards;
   opacity: 0;
 }
+
+/* Badge Float Animation - Slow up and down movement */
+@keyframes badgeFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.badge-float {
+  animation: badgeFloat 4s ease-in-out infinite;
+}
+
+/* Background Pulse - Darkens every 3 seconds */
+@keyframes bgPulse {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(0.7);
+  }
+}
+
+.bg-pulse {
+  animation: bgPulse 6s ease-in-out infinite;
+}

@@ -1,5 +1,7 @@
+"use client";
+
 import React, { useEffect } from "react";
-import { usePathname } from "../../lib/next-shim";
+import { usePathname } from "next/navigation";
 
 const CanonicalUrl: React.FC = () => {
   const pathname = usePathname();
@@ -7,18 +9,17 @@ const CanonicalUrl: React.FC = () => {
   const canonicalUrl = `${baseUrl}${pathname === "/" ? "" : pathname}`;
 
   useEffect(() => {
-    // Remove existing canonical link if any
+    // Update canonical link
     const existingCanonical = document.querySelector('link[rel="canonical"]');
     if (existingCanonical) {
-      existingCanonical.remove();
+      existingCanonical.setAttribute("href", canonicalUrl);
+    } else {
+      const link = document.createElement("link");
+      link.rel = "canonical";
+      link.href = canonicalUrl;
+      document.head.appendChild(link);
     }
-
-    // Add new canonical link
-    const link = document.createElement("link");
-    link.rel = "canonical";
-    link.href = canonicalUrl;
-    document.head.appendChild(link);
-  }, [canonicalUrl]);
+  }, [canonicalUrl, pathname]);
 
   return null;
 };

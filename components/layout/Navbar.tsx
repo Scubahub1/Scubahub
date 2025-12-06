@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Link, usePathname } from "../../lib/next-shim";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Button from "../ui/Button";
 
 const Navbar = () => {

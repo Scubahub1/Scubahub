@@ -1,5 +1,5 @@
 import React from "react";
-import { Image } from "../lib/next-shim";
+import Image from "next/image";
 import SectionTitle from "./ui/SectionTitle";
 import { diveProcess, equipment } from "../data/mockData";
 

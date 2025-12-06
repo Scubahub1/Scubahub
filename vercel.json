@@ -1,7 +1,5 @@
 {
-  "framework": "vite",
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
+  "framework": "nextjs",
   "redirects": [
     {
       "source": "/(.*)",
@@ -11,14 +9,8 @@
           "value": "www.scubahub.com"
         }
       ],
-      "destination": "https://scubahub.com/",
+      "destination": "https://scubahub.com/:1",
       "permanent": true
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
     }
   ],
   "headers": [

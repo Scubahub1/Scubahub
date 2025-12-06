@@ -8,8 +8,6 @@ import AboutPage from "./app/about/page";
 import BookPage from "./app/book/page";
 import FAQPage from "./app/faq/page";
 import GalleryPage from "./app/gallery/page";
-import BlogPage from "./app/blog/page";
-import BlogPostPage from "./app/blog/[slug]/page";
 import { RouterProvider, usePathname } from "./lib/next-shim";
 
 const App = () => {
@@ -32,11 +30,6 @@ const App = () => {
     component = <FAQPage />;
   } else if (path === "/gallery") {
     component = <GalleryPage />;
-  } else if (path === "/blog") {
-    component = <BlogPage />;
-  } else if (path.startsWith("/blog/")) {
-    const slug = path.split("/")[2];
-    component = <BlogPostPage params={{ slug }} />;
   } else {
     component = (
       <div className="min-h-screen pt-32 text-center text-white">

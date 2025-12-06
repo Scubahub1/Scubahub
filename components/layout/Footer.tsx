@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "../../lib/next-shim";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -115,8 +115,17 @@ const Footer = () => {
 
         <div className="border-t border-slate-800 pt-8 text-center text-slate-500 text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Scuba Hub Adventures. All rights
-            reserved.
+            © {new Date().getFullYear()} Scuba Hub — Murudeshwar • Designed &
+            Developed by{" "}
+            <a
+              href="https://your-portfolio-link-here.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:text-blue-300 hover:underline transition duration-200"
+            >
+              N.T. Hrutikkumar
+            </a>{" "}
+            • Dive Beyond
           </p>
         </div>
       </div>

@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 
 const ContactWidget = () => {
@@ -26,7 +27,7 @@ const ContactWidget = () => {
         </a>
         <a
           href="tel:+919876543210"
-          className="w-12 h-12 rounded-full bg-ocean-600 text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300"
+          className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300"
           title="Call Us"
         >
           <svg
@@ -50,7 +51,7 @@ const ContactWidget = () => {
         onClick={() => setIsOpen(!isOpen)}
         className={`w-14 h-14 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-105 z-50 ${
           isOpen
-            ? "bg-slate-800 text-white rotate-45"
+            ? "bg-[#27F5E7] text-white rotate-45"
             : "bg-teal-500 text-white"
         }`}
       >
