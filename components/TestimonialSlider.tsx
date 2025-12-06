@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Image } from "../lib/next-shim";
+import Image from "next/image";
 import { Testimonial } from "../types";
 
 const TestimonialSlider = ({

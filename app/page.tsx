@@ -1,5 +1,6 @@
 import React from "react";
-import { Image, Link } from "../lib/next-shim"; // Shim imports
+import Image from "next/image";
+import Link from "next/link";
 import Button from "../components/ui/Button";
 import SectionTitle from "../components/ui/SectionTitle";
 import { experiences, testimonials } from "../data/mockData";
@@ -12,7 +13,7 @@ export default function Home() {
       {/* HERO SECTION - Always Dark/Immersive */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 md:pt-20">
         {/* Animated Background */}
-        <div className="absolute inset-0 z-0 bg-gradient-to-br from-slate-950 via-sky-900 to-teal-850 animate-ripple bg-[length:200%_200%] bg-pulse"></div>
+        <div className="absolute inset-0 z-0 bg-gradient-to-br from-slate-900 via-sky-800 to-teal-800 animate-ripple bg-[length:200%_200%] bg-pulse"></div>
         <div className="absolute inset-0 z-0 opacity-30 bg-underwater-mesh"></div>
 
         {/* High-res background overlay for premium feel */}
@@ -105,38 +106,6 @@ export default function Home() {
             </Button>
           </div>
         </div>
-
-        <style jsx>{`
-          /* Badge Float Animation - Slow up and down movement */
-          .badge-float {
-            animation: badgeFloat 4s ease-in-out infinite;
-          }
-
-          @keyframes badgeFloat {
-            0%,
-            100% {
-              transform: translateY(0px);
-            }
-            50% {
-              transform: translateY(-15px);
-            }
-          }
-
-          /* Background Pulse - Darkens every 3 seconds */
-          .bg-pulse {
-            animation: bgPulse 6s ease-in-out infinite;
-          }
-
-          @keyframes bgPulse {
-            0%,
-            100% {
-              filter: brightness(1);
-            }
-            50% {
-              filter: brightness(0.7);
-            }
-          }
-        `}</style>
       </section>
 
       {/* ABOUT SNIPPET */}
@@ -160,14 +129,15 @@ export default function Home() {
               />
             </div>
           </div>
-          <div>
+          <div className="mt-2">
             <SectionTitle
               align="left"
               title="Why Dive With Scuba Hub?"
               subtitle="We are the Netrani Island specialists."
             />
+            <div className="h-1.5 bg-blue-500 rounded-full w-[80px] mb-6 mt-[-40px]"></div>
 
-            <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed md:mt-[-60px]">
+            <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
               Scuba Hub Adventures was born from a passion to showcase the
               hidden underwater gem of India: Netrani Island. Located off
               Murudeshwar, this heart-shaped island offers the clearest waters
@@ -182,7 +152,7 @@ export default function Home() {
               ].map((item, i) => (
                 <li
                   key={i}
-                  className="flex items-center gap-3 text-slate-800 dark:text-slate-200 font-medium"
+                  className="flex items-center gap-3 text-white dark:text-white font-medium"
                 >
                   <span className="w-6 h-6 rounded-full bg-teal-100 dark:bg-teal-900 flex items-center justify-center text-teal-600 dark:text-teal-400 text-xs font-bold">
                     ✓
